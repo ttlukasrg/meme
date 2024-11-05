@@ -1,7 +1,26 @@
  <!DOCTYPE html>
 <html>
 <head>
-    <title>Mi Página con Imagen y Cámara</title>
+    <title>Mi Página con Imagen, Cámara y Animación</title>
+    <style>
+        body {
+            background-image: url('fondo.jpg'); /* Asegúrate de tener esta imagen en tu carpeta */
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            overflow: hidden;
+        }
+        @keyframes rain {
+            0% { top: -10%; opacity: 1; }
+            100% { top: 110%; opacity: 0; }
+        }
+        .emoji {
+            position: absolute;
+            top: -10%;
+            font-size: 24px;
+            animation: rain linear infinite;
+        }
+    </style>
 </head>
 <body>
     <h1>¡Por supuesto gay el que lo lea!</h1>
@@ -22,6 +41,25 @@
                 video.play();
             });
         }
+
+        // Función para crear emojis de payasos que caen como lluvia
+        function createClownEmoji() {
+            var emoji = document.createElement('div');
+            emoji.className = 'emoji';
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = Math.random() * 2 + 3 + 's';
+            emoji.innerHTML = '🤡';
+            document.body.appendChild(emoji);
+
+            // Eliminar el emoji después de la animación
+            setTimeout(() => {
+                emoji.remove();
+            }, 5000);
+        }
+
+        // Crear múltiples emojis de payasos
+        setInterval(createClownEmoji, 300);
+
     </script>
 </body>
 </html>
